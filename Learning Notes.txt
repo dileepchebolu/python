@@ -1,0 +1,42 @@
+For printing some output, use below command 
+
+Basically python is a interpreter. as like shell scripting. 
+
+It will execute the commands sequentialy as like shell scripting.
+
+While jave programme, needs to compile and it and then only we can execute that programme. 
+print("Hello World!")
+
+Variables:
+    Datatypes:
+        > Strings:
+            ex: character_name = "Dileep"
+        > Numbers:
+            ex: character_age = 50   ## No need of quotes for numbers 
+                character_age = 3.4567 
+        > True or False values:
+            ex:
+                is_male = False
+                is_male = True
+
+Inputs (taking inputs in middle of the script):
+    Note: as like read command in bash scripting.
+
+    Ex:
+        dileep = input("what you want to add here ..?")
+        print("Hello" + dileep )
+        
+
+Lists:
+    Sample programme:
+        list_values = [ "kevin" , "Karen" , "Jim" , "dileep" ]
+
+        print(list_values[3]) 
+        print(list_values[0:4])    
+
+        Note:
+            If you select a range of 0 to 4 then print the values from index-0 to index-3 values 
+    
+    Output:
+        dileep
+        ['kevin', 'Karen', 'Jim', 'dileep']
