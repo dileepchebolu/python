@@ -13,6 +13,26 @@ By using class we can create a data type and we can use that data type by callin
 """
 from app import Student
 
+"""
+FYI, Am pasting the Student class here ..
+    class Student:
+    def __init__(self, name, major, gpa, is_on_probation):
+        self.name = name
+        self.major = major
+        self.gpa = gpa 
+        self.is_on_probation = is_on_probation
+
+"""
+
 student1 = Student("Dileep", "Business", 3.1, False)
 
-print(student1)
+print(student1.name)
+print(student1.major)
+print(student1.gpa)
+
+# ========================
+# OUTPUT:
+#     Dileep
+#     Business
+#     3.1
+# ========================
