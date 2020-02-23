@@ -3,7 +3,15 @@ list_values = [ "kevin" , "Karen" , "Jim" , "dileep" ]
 print(list_values[3]) 
 print(list_values[0:2]) 
 
+print(list_values[1:])  ## will print all the value after second value in the list 
+
+print(list_values[:3]) ## Will print all the values before 4th value in the list
+
 print(list_values[1])
+
+print(list_values[-1])  ## Will print the last value of the list 
+
+print(list_values[-2])  ## Will print the second last value in the list.
 
 list_values[1] = "surya"
 
