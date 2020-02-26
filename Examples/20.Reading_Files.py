@@ -6,8 +6,8 @@ employee_file = open("Examples/employee_file.txt", "r")
 #       "a" for append permissions, means it can not read or write the existing content in the file.
 #       "r+" for read and write permissions 
 print(employee_file.readable())  # will print wether the file opened is readable or not and will print boolean value 
-# print(employee_file.read())    ## will print all the contents of the file 
-print(employee_file.readline())  ## will print only first line of the file 
+print(employee_file.read())    ## will print all the contents of the file 
+#print(employee_file.readline())  ## will print only first line of the file 
 print(employee_file.readlines()[1]) ## will print all the lines in the file (as like read function) Will give out output as like a "list". 
 # ========================================================================
 # OUTPUT:

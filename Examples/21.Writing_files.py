@@ -6,9 +6,8 @@ employee_file.write("\nhari - Systems engineer")  ## it will append this content
 employee_file.close()
 
 
-employee_file = open("Examples/employee_file1.txt", "w")
+employee_file = open("Examples/employee_file.txt", "r")
 
 # Note: We can use "w" to create a new file, and when you execute that one it will delete all the content in that file.
 
-
- 
+print(employee_file.read()) 

@@ -20,7 +20,7 @@ print("Bottom")
 # xyz23 ## for calling above function in bash scripting
 
 
-## Passing variables to function 
+## Passing variables to function   We can pass any number of variables to the function and there is no concopt of positional argumnets as like in shell scripting.
 
 def say_hi( name ):
     print("entering value of " + name + " in function")

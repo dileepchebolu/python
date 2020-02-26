@@ -15,4 +15,5 @@ print(result)
 # == for strings 
 # <= for lessthan or equal to
 # != not-equal-to 
-
+# and for  First it will perform first operation and then only it will look for second function.
+# or  for Either one of the function should be true, then only condition would be true.

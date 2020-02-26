@@ -1,8 +1,10 @@
 real_password = "dileepchebolu"
 guess_password = ""
+import getpass
 
 while guess_password != real_password:
-    guess_password = input("Enter correct password: ")
+    #guess_password = input("Enter correct password: ")  ## THis is for taking normal input. and will show what we are entering in terminal.
+    guess_password = getpass.getpass(prompt="Enter correct password: ")   ## This one is we should use for passwords, bcz, it won't show what we are taking from user.
 
 print("Whola! you able to find the correct password :)")
 
