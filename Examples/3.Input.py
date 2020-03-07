@@ -13,3 +13,4 @@ else:
     print("The answer you provided is incorrect :( ")
 
 
+print(getpass.getuser())   ## For printing the default user who currently logged into.

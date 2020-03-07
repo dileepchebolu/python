@@ -1,0 +1,161 @@
+Preparing the postgress server:
+
+   [root@VM-101991388 ~]# curl -o bash.sh https://raw.githubusercontent.com/linuxacademy/content-python-for-sys-admins/master/helpers/db_setup.sh
+
+   [root@VM-101991388 ~]# chmod 777 bash.sh
+
+   [root@VM-101991388 ~]# ./bash.sh   
+
+        # Above script will do below things:
+            1. Update the packages in server 
+            2. Install Docker 
+            3. Create a docker container which includes postgress 9.6 version 
+            4. And load some fake data into table called sample 
+            5. While installation, ill prompt for postgress username and password 
+
+Client setup and application creation steps:
+
+    > Installing pipenv package (This is the combination of venv and pip)
+
+        [root@VM-101989904 pgbackup]# pwd
+        /root/code/pgbackup
+        [root@VM-101989904 pgbackup]# pip3.6 install pipenv   ## Will install pipenv using pip.
+
+        [root@VM-101989904 pgbackup]# pipenv --help  
+
+        [root@VM-101989904 pgbackup]# pipenv --python $(which python3.6)   ## For configuring pipenv to use python3.6 environment.
+
+            ## Above command will create pipfile for this project 
+
+
+    Making setu.py file:
+        [root@VM-101989904 pgbackup]# cat setup.py
+            from setuptools import setup, find_packages
+            with open("README.rst", encoding="UTF-8") as f:
+                readme = f.read()
+
+            setup(
+                name="pgbackup",
+                version="0.1.10",
+                description="Database backups locally or to AWS S3.",
+                long_description=readme,
+                author="Dileep",
+                author_email="dileepchebolu@gmail.com",
+                install_requires=[],
+                packages=find_packages("src"),
+                package_dir={"": "src"}
+            )
+    Then Install the package, using below command 
+        [root@VM-101989904 pgbackup]# pip install -e .
+        Obtaining file:///root/code/pgbackup
+        Installing collected packages: pgbackup
+        Running setup.py develop for pgbackup
+        Successfully installed pgbackup
+
+    And you can uninstall the package using below command 
+
+        [root@VM-101989904 pgbackup]# pip uninstall pgbackup
+            Found existing installation: pgbackup 0.1.10
+            Uninstalling pgbackup-0.1.10:
+            Would remove:
+                /root/.local/share/virtualenvs/pgbackup-VGdOwSxu/lib/python3.6/site-packages/pgbackup.egg-link
+            Proceed (y/n)? y
+            Successfully uninstalled pgbackup-0.1.10
+
+    Creating Makefile, content should be like below 
+        [root@VM-101989904 pgbackup]# cat Makefile
+            .PHONY: install test
+
+            default: test
+
+            install:
+                    pipenv install --dev --skip-lock
+
+            test:
+                    PYTHONPATH=./src pytest
+
+    Installing Makefile:    
+        [root@VM-101989904 pgbackup]# make install
+            pipenv install --dev --skip-lock
+            Installing dependencies from Pipfile…
+            🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 8/8 — 0
+
+    
+    Pipfile content: Pipfile will create to project directory, when we initializing the pipenv shell command.
+
+
+    For Querying the postgress database located on postgress server from client machine.
+
+        psql postgres://admin:admin@192.168.2.101:80/sample -c "SELECT count(id) FROM employees;"
+            (pgbackup) [root@VM-101989904 pgbackup]# psql postgres://admin:admin@192.168.2.101:80/sample -c "SELECT count(id) FROM employees;"
+                count
+                -------
+                1000
+                (1 row)
+
+
+    Installing a package using setup.py file:
+        (pgbackup) [root@VM-101989904 pgbackup]# pip install -e .
+            Obtaining file:///root/code/pgbackup
+            Installing collected packages: pgbackup
+            Running setup.py develop for pgbackup
+            Successfully installed pgbackup
+
+    Then installing a package under dev packages list:  
+        pip install --dev pytest
+
+
+    (pgbackup) [root@VM-101989904 pgbackup]# pipenv install --dev pytest
+            Installing pytest…
+            ✔ Installation Succeeded
+            Pipfile.lock not found, creating…
+            Locking [dev-packages] dependencies…
+            ✔ Success!
+            Locking [packages] dependencies…
+            ✔ Success!
+            Updated Pipfile.lock (051521)!
+            Installing dependencies from Pipfile.lock (051521)…
+            🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 15/18 — 00:00:00
+
+            🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 18/18 — 00:00:28
+
+
+
+    Pipfile after adding pytest package:    
+            (pgbackup) [root@VM-101989904 pgbackup]# cat Pipfile
+                [[source]]
+                name = "pypi"
+                url = "https://pypi.org/simple"
+                verify_ssl = true
+
+                [dev-packages]
+                pytest = "*"
+
+                [packages]
+                boto3 = "==1.12.6"
+                botocore = "==1.15.6"
+                docutils = "==0.15.2"
+                jmespath = "==0.9.5"
+                python-dateutil = "==2.8.1"
+                s3transfer = "==0.3.3"
+                six = "==1.14.0"
+                urllib3 = "==1.25.8"
+
+                [requires]
+                python_version = "3.6"
+
+
+
+
+
+
+
+
+
+
+
+
+        
+  
+        
+
