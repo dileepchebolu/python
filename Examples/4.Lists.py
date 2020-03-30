@@ -7,6 +7,10 @@ print(list_values[1:])  ## will print all the value after second value in the li
 
 print(list_values[:3]) ## Will print all the values before 4th value in the list
 
+print(list_values[::2])  ## Will print the values of 0,2,4,6 positions 
+
+print(list_values[1::2])  ## will print the values of 1,3,5,7, start at 1 and print one position later position value 
+
 print(list_values[1])
 
 print(list_values[-1])  ## Will print the last value of the list 

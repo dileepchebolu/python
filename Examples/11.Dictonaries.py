@@ -16,7 +16,7 @@ monthConversions = {
 print(monthConversions["Oct"])  ## one way of geting the values 
 print(monthConversions.get("Oct"))  ## second way of getting values from dictonary values 
 
-print(monthConversions.items())
+print(monthConversions.items()
 
 ## Note: If no valid key value is matched, then will return "None" output.
 
