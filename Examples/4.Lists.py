@@ -1,4 +1,6 @@
 list_values = [ "kevin" , "Karen" , "Jim" , "dileep" ]
+
+"""
 print(len(list_values))
 print(list_values[3]) 
 print(list_values[0:2]) 
@@ -53,7 +55,12 @@ print(list_values)
 
 #list_values.extend
 #list_values.reverse
+"""
 
+print(list_values.pop())
+print(list_values.pop(0))
+print(list_values.pop())
+print(list_values.pop(0))
 
 
 #Output:    
